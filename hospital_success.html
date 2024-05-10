@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Dashboard</title>
+  <link rel="stylesheet" href="hos_suc.css">
+</head>
+<body>
+  <header>
+    <h1>Hospital Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="hospital_home.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <button id="admitPatientBtn">Admit Patient</button>
+
+    <section id="admitPatientSection" style="display: none;">
+      <h2>Admit Patient</h2>
+      <form id="admitPatientForm">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName" required><br>
+
+        <label for="patientId">Patient ID:</label>
+        <input type="text" id="patientId" name="patientId" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Hospital Portal</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('admitPatientBtn').addEventListener('click', function() {
+      document.getElementById('admitPatientSection').style.display = 'block';
+      // Scroll to the admit patient section
+      document.getElementById('admitPatientSection').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

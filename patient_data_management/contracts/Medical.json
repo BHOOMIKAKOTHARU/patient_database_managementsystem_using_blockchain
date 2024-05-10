@@ -1,0 +1,1740 @@
+{
+  "contractName": "Medical",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "string",
+          "name": "patientId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "patientName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "billType",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "amount",
+          "type": "string"
+        }
+      ],
+      "name": "BillAdded",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "bills",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "patientId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "patientName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "billType",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "amount",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_patientId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_patientName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_billType",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_amount",
+          "type": "string"
+        }
+      ],
+      "name": "addMedicalBill",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"string\",\"name\":\"patientId\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"patientName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"billType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"amount\",\"type\":\"string\"}],\"name\":\"BillAdded\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_patientId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_patientName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_billType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_amount\",\"type\":\"string\"}],\"name\":\"addMedicalBill\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"bills\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"patientId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"patientName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"billType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"amount\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Medical.sol\":\"Medical\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Medical.sol\":{\"keccak256\":\"0x1a0691d6e0439fb445251e0a3535779e1de1df43a82e3743144321dc57e94abf\",\"urls\":[\"bzz-raw://019c1a067c7a2b55764997a10fc765fff0669c95c3e60f567bdddf0b469e65b9\",\"dweb:/ipfs/QmauDJwhZkBKKLHyWG2LPRrPFuycqqiskMzSaNySURubcz\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061091a806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80631ef348941461003b57806328bdcde814610057575b600080fd5b61005560048036036100509190810190610585565b61008a565b005b610071600480360361006c9190810190610648565b6101b2565b6040516100819493929190610777565b60405180910390f35b61009261044f565b60405180608001604052808681526020018581526020018481526020018381525090506000819080600181540180825580915050906001820390600052602060002090600402016000909192909190915060008201518160000190805190602001906100ff929190610477565b50602082015181600101908051906020019061011c929190610477565b506040820151816002019080519060200190610139929190610477565b506060820151816003019080519060200190610156929190610477565b50505050846040516101689190610714565b60405180910390207f2b2fae659502228cc32f4e1e9c16b957ab9f467d8f0fda1dfae5c80f0defa4938585856040516101a39392919061072b565b60405180910390a25050505050565b600081815481106101bf57fe5b9060005260206000209060040201600091509050806000018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561026b5780601f106102405761010080835404028352916020019161026b565b820191906000526020600020905b81548152906001019060200180831161024e57829003601f168201915b505050505090806001018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103095780601f106102de57610100808354040283529160200191610309565b820191906000526020600020905b8154815290600101906020018083116102ec57829003601f168201915b505050505090806002018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103a75780601f1061037c576101008083540402835291602001916103a7565b820191906000526020600020905b81548152906001019060200180831161038a57829003601f168201915b505050505090806003018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104455780601f1061041a57610100808354040283529160200191610445565b820191906000526020600020905b81548152906001019060200180831161042857829003601f168201915b5050505050905084565b6040518060800160405280606081526020016060815260200160608152602001606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106104b857805160ff19168380011785556104e6565b828001600101855582156104e6579182015b828111156104e55782518255916020019190600101906104ca565b5b5090506104f391906104f7565b5090565b61051991905b808211156105155760008160009055506001016104fd565b5090565b90565b600082601f83011261052d57600080fd5b813561054061053b82610805565b6107d8565b9150808252602083016020830185838301111561055c57600080fd5b61056783828461086d565b50505092915050565b60008135905061057f816108c0565b92915050565b6000806000806080858703121561059b57600080fd5b600085013567ffffffffffffffff8111156105b557600080fd5b6105c18782880161051c565b945050602085013567ffffffffffffffff8111156105de57600080fd5b6105ea8782880161051c565b935050604085013567ffffffffffffffff81111561060757600080fd5b6106138782880161051c565b925050606085013567ffffffffffffffff81111561063057600080fd5b61063c8782880161051c565b91505092959194509250565b60006020828403121561065a57600080fd5b600061066884828501610570565b91505092915050565b600061067c8261083c565b6106868185610847565b935061069681856020860161087c565b61069f816108af565b840191505092915050565b60006106b58261083c565b6106bf8185610858565b93506106cf81856020860161087c565b80840191505092915050565b60006106e682610831565b6106f08185610847565b935061070081856020860161087c565b610709816108af565b840191505092915050565b600061072082846106aa565b915081905092915050565b600060608201905081810360008301526107458186610671565b905081810360208301526107598185610671565b9050818103604083015261076d8184610671565b9050949350505050565b6000608082019050818103600083015261079181876106db565b905081810360208301526107a581866106db565b905081810360408301526107b981856106db565b905081810360608301526107cd81846106db565b905095945050505050565b6000604051905081810181811067ffffffffffffffff821117156107fb57600080fd5b8060405250919050565b600067ffffffffffffffff82111561081c57600080fd5b601f19601f8301169050602081019050919050565b600081519050919050565b600081519050919050565b600082825260208201905092915050565b600081905092915050565b6000819050919050565b82818337600083830152505050565b60005b8381101561089a57808201518184015260208101905061087f565b838111156108a9576000848401525b50505050565b6000601f19601f8301169050919050565b6108c981610863565b81146108d457600080fd5b5056fea365627a7a723158206cab12bdc953093d5cdef960e5891675b9a8e203ed02787078826bf71884e6886c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80631ef348941461003b57806328bdcde814610057575b600080fd5b61005560048036036100509190810190610585565b61008a565b005b610071600480360361006c9190810190610648565b6101b2565b6040516100819493929190610777565b60405180910390f35b61009261044f565b60405180608001604052808681526020018581526020018481526020018381525090506000819080600181540180825580915050906001820390600052602060002090600402016000909192909190915060008201518160000190805190602001906100ff929190610477565b50602082015181600101908051906020019061011c929190610477565b506040820151816002019080519060200190610139929190610477565b506060820151816003019080519060200190610156929190610477565b50505050846040516101689190610714565b60405180910390207f2b2fae659502228cc32f4e1e9c16b957ab9f467d8f0fda1dfae5c80f0defa4938585856040516101a39392919061072b565b60405180910390a25050505050565b600081815481106101bf57fe5b9060005260206000209060040201600091509050806000018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561026b5780601f106102405761010080835404028352916020019161026b565b820191906000526020600020905b81548152906001019060200180831161024e57829003601f168201915b505050505090806001018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103095780601f106102de57610100808354040283529160200191610309565b820191906000526020600020905b8154815290600101906020018083116102ec57829003601f168201915b505050505090806002018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103a75780601f1061037c576101008083540402835291602001916103a7565b820191906000526020600020905b81548152906001019060200180831161038a57829003601f168201915b505050505090806003018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104455780601f1061041a57610100808354040283529160200191610445565b820191906000526020600020905b81548152906001019060200180831161042857829003601f168201915b5050505050905084565b6040518060800160405280606081526020016060815260200160608152602001606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106104b857805160ff19168380011785556104e6565b828001600101855582156104e6579182015b828111156104e55782518255916020019190600101906104ca565b5b5090506104f391906104f7565b5090565b61051991905b808211156105155760008160009055506001016104fd565b5090565b90565b600082601f83011261052d57600080fd5b813561054061053b82610805565b6107d8565b9150808252602083016020830185838301111561055c57600080fd5b61056783828461086d565b50505092915050565b60008135905061057f816108c0565b92915050565b6000806000806080858703121561059b57600080fd5b600085013567ffffffffffffffff8111156105b557600080fd5b6105c18782880161051c565b945050602085013567ffffffffffffffff8111156105de57600080fd5b6105ea8782880161051c565b935050604085013567ffffffffffffffff81111561060757600080fd5b6106138782880161051c565b925050606085013567ffffffffffffffff81111561063057600080fd5b61063c8782880161051c565b91505092959194509250565b60006020828403121561065a57600080fd5b600061066884828501610570565b91505092915050565b600061067c8261083c565b6106868185610847565b935061069681856020860161087c565b61069f816108af565b840191505092915050565b60006106b58261083c565b6106bf8185610858565b93506106cf81856020860161087c565b80840191505092915050565b60006106e682610831565b6106f08185610847565b935061070081856020860161087c565b610709816108af565b840191505092915050565b600061072082846106aa565b915081905092915050565b600060608201905081810360008301526107458186610671565b905081810360208301526107598185610671565b9050818103604083015261076d8184610671565b9050949350505050565b6000608082019050818103600083015261079181876106db565b905081810360208301526107a581866106db565b905081810360408301526107b981856106db565b905081810360608301526107cd81846106db565b905095945050505050565b6000604051905081810181811067ffffffffffffffff821117156107fb57600080fd5b8060405250919050565b600067ffffffffffffffff82111561081c57600080fd5b601f19601f8301169050602081019050919050565b600081519050919050565b600081519050919050565b600082825260208201905092915050565b600081905092915050565b6000819050919050565b82818337600083830152505050565b60005b8381101561089a57808201518184015260208101905061087f565b838111156108a9576000848401525b50505050565b6000601f19601f8301169050919050565b6108c981610863565b81146108d457600080fd5b5056fea365627a7a723158206cab12bdc953093d5cdef960e5891675b9a8e203ed02787078826bf71884e6886c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "93:982:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;93:982:2;;;;;;;",
+  "deployedSourceMap": "93:982:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;93:982:2;;;;;;;;;;;;;;;;;;;;;;;;627:445;;;;;;;;;;;;;;;;:::i;:::-;;356:19;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;627:445;808:19;;:::i;:::-;830:50;;;;;;;;835:10;830:50;;;;847:12;830:50;;;;861:9;830:50;;;;872:7;830:50;;;808:72;;935:5;946:7;935:19;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;935:19:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;1019:10;1009:55;;;;;;;;;;;;;;;;1031:12;1045:9;1056:7;1009:55;;;;;;;;;;;;;;;;;627:445;;;;;:::o;356:19::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;93:982::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;6:442:-1:-;;108:3;101:4;93:6;89:17;85:27;75:2;;126:1;123;116:12;75:2;163:6;150:20;185:65;200:49;242:6;200:49;;;185:65;;;176:74;;270:6;263:5;256:21;306:4;298:6;294:17;339:4;332:5;328:16;374:3;365:6;360:3;356:16;353:25;350:2;;;391:1;388;381:12;350:2;401:41;435:6;430:3;425;401:41;;;68:380;;;;;;;;456:130;;536:6;523:20;514:29;;548:33;575:5;548:33;;;508:78;;;;;593:1041;;;;;788:3;776:9;767:7;763:23;759:33;756:2;;;805:1;802;795:12;756:2;868:1;857:9;853:17;840:31;891:18;883:6;880:30;877:2;;;923:1;920;913:12;877:2;943:63;998:7;989:6;978:9;974:22;943:63;;;933:73;;819:193;1071:2;1060:9;1056:18;1043:32;1095:18;1087:6;1084:30;1081:2;;;1127:1;1124;1117:12;1081:2;1147:63;1202:7;1193:6;1182:9;1178:22;1147:63;;;1137:73;;1022:194;1275:2;1264:9;1260:18;1247:32;1299:18;1291:6;1288:30;1285:2;;;1331:1;1328;1321:12;1285:2;1351:63;1406:7;1397:6;1386:9;1382:22;1351:63;;;1341:73;;1226:194;1479:2;1468:9;1464:18;1451:32;1503:18;1495:6;1492:30;1489:2;;;1535:1;1532;1525:12;1489:2;1555:63;1610:7;1601:6;1590:9;1586:22;1555:63;;;1545:73;;1430:194;750:884;;;;;;;;1641:241;;1745:2;1733:9;1724:7;1720:23;1716:32;1713:2;;;1761:1;1758;1751:12;1713:2;1796:1;1813:53;1858:7;1849:6;1838:9;1834:22;1813:53;;;1803:63;;1775:97;1707:175;;;;;1889:347;;2001:39;2034:5;2001:39;;;2052:71;2116:6;2111:3;2052:71;;;2045:78;;2128:52;2173:6;2168:3;2161:4;2154:5;2150:16;2128:52;;;2201:29;2223:6;2201:29;;;2196:3;2192:39;2185:46;;1981:255;;;;;;2243:360;;2373:39;2406:5;2373:39;;;2424:89;2506:6;2501:3;2424:89;;;2417:96;;2518:52;2563:6;2558:3;2551:4;2544:5;2540:16;2518:52;;;2591:6;2586:3;2582:16;2575:23;;2353:250;;;;;;2610:339;;2718:35;2747:5;2718:35;;;2765:71;2829:6;2824:3;2765:71;;;2758:78;;2841:52;2886:6;2881:3;2874:4;2867:5;2863:16;2841:52;;;2914:29;2936:6;2914:29;;;2909:3;2905:39;2898:46;;2698:251;;;;;;2956:266;;3102:95;3193:3;3184:6;3102:95;;;3095:102;;3214:3;3207:10;;3083:139;;;;;3229:699;;3463:2;3452:9;3448:18;3440:26;;3513:9;3507:4;3503:20;3499:1;3488:9;3484:17;3477:47;3538:78;3611:4;3602:6;3538:78;;;3530:86;;3664:9;3658:4;3654:20;3649:2;3638:9;3634:18;3627:48;3689:78;3762:4;3753:6;3689:78;;;3681:86;;3815:9;3809:4;3805:20;3800:2;3789:9;3785:18;3778:48;3840:78;3913:4;3904:6;3840:78;;;3832:86;;3434:494;;;;;;;3935:867;;4201:3;4190:9;4186:19;4178:27;;4252:9;4246:4;4242:20;4238:1;4227:9;4223:17;4216:47;4277:74;4346:4;4337:6;4277:74;;;4269:82;;4399:9;4393:4;4389:20;4384:2;4373:9;4369:18;4362:48;4424:74;4493:4;4484:6;4424:74;;;4416:82;;4546:9;4540:4;4536:20;4531:2;4520:9;4516:18;4509:48;4571:74;4640:4;4631:6;4571:74;;;4563:82;;4693:9;4687:4;4683:20;4678:2;4667:9;4663:18;4656:48;4718:74;4787:4;4778:6;4718:74;;;4710:82;;4172:630;;;;;;;;4809:256;;4871:2;4865:9;4855:19;;4909:4;4901:6;4897:17;5008:6;4996:10;4993:22;4972:18;4960:10;4957:34;4954:62;4951:2;;;5029:1;5026;5019:12;4951:2;5049:10;5045:2;5038:22;4849:216;;;;;5072:322;;5216:18;5208:6;5205:30;5202:2;;;5248:1;5245;5238:12;5202:2;5315:4;5311:9;5304:4;5296:6;5292:17;5288:33;5280:41;;5379:4;5373;5369:15;5361:23;;5139:255;;;;5401:118;;5491:5;5485:12;5475:22;;5456:63;;;;5526:122;;5620:5;5614:12;5604:22;;5585:63;;;;5656:163;;5771:6;5766:3;5759:19;5808:4;5803:3;5799:14;5784:29;;5752:67;;;;;5828:145;;5964:3;5949:18;;5942:31;;;;;5981:72;;6043:5;6032:16;;6026:27;;;;6061:145;6142:6;6137:3;6132;6119:30;6198:1;6189:6;6184:3;6180:16;6173:27;6112:94;;;;6215:268;6280:1;6287:101;6301:6;6298:1;6295:13;6287:101;;;6377:1;6372:3;6368:11;6362:18;6358:1;6353:3;6349:11;6342:39;6323:2;6320:1;6316:10;6311:15;;6287:101;;;6403:6;6400:1;6397:13;6394:2;;;6468:1;6459:6;6454:3;6450:16;6443:27;6394:2;6264:219;;;;;6491:97;;6579:2;6575:7;6570:2;6563:5;6559:14;6555:28;6545:38;;6539:49;;;;6596:117;6665:24;6683:5;6665:24;;;6658:5;6655:35;6645:2;;6704:1;6701;6694:12;6645:2;6639:74;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.5.0;\r\npragma experimental ABIEncoderV2;\r\ncontract Medical {\r\n    // Define a struct to represent medical bill details\r\n    struct Bill {\r\n        string patientId;\r\n        string patientName;\r\n        string billType;\r\n        string amount;\r\n    }\r\n\r\n    // Define an array to store medical bills\r\n    Bill[] public bills;\r\n\r\n    // Event to emit when a new medical bill is added\r\n    event BillAdded(\r\n        string indexed patientId,\r\n        string patientName,\r\n        string billType,\r\n        string amount\r\n    );\r\n\r\n    // Function to add a new medical bill\r\n    function addMedicalBill(string memory _patientId, string memory _patientName, string memory _billType, string memory _amount) public {\r\n        // Create a new bill object\r\n        Bill memory newBill = Bill(_patientId, _patientName, _billType, _amount);\r\n\r\n        // Add the new bill to the array\r\n        bills.push(newBill);\r\n\r\n        // Emit the BillAdded event\r\n        emit BillAdded(_patientId, _patientName, _billType, _amount);\r\n    }\r\n}\r\n",
+  "sourcePath": "C:\\Users\\kotha\\Desktop\\SE\\patient_data_management\\contracts\\Medical.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Medical.sol",
+    "exportedSymbols": {
+      "Medical": [
+        276
+      ]
+    },
+    "id": 277,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 218,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:2"
+      },
+      {
+        "id": 219,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "58:33:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 276,
+        "linearizedBaseContracts": [
+          276
+        ],
+        "name": "Medical",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Medical.Bill",
+            "id": 228,
+            "members": [
+              {
+                "constant": false,
+                "id": 221,
+                "name": "patientId",
+                "nodeType": "VariableDeclaration",
+                "scope": 228,
+                "src": "198:16:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 220,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "198:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 223,
+                "name": "patientName",
+                "nodeType": "VariableDeclaration",
+                "scope": 228,
+                "src": "225:18:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 222,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "225:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 225,
+                "name": "billType",
+                "nodeType": "VariableDeclaration",
+                "scope": 228,
+                "src": "254:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 224,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "254:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 227,
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 228,
+                "src": "280:13:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 226,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "280:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Bill",
+            "nodeType": "StructDefinition",
+            "scope": 276,
+            "src": "175:126:2",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 231,
+            "name": "bills",
+            "nodeType": "VariableDeclaration",
+            "scope": 276,
+            "src": "356:19:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Bill_$228_storage_$dyn_storage",
+              "typeString": "struct Medical.Bill[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 229,
+                "name": "Bill",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 228,
+                "src": "356:4:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Bill_$228_storage_ptr",
+                  "typeString": "struct Medical.Bill"
+                }
+              },
+              "id": 230,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "356:6:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Bill_$228_storage_$dyn_storage_ptr",
+                "typeString": "struct Medical.Bill[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 241,
+            "name": "BillAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 240,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 233,
+                  "indexed": true,
+                  "name": "patientId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 241,
+                  "src": "465:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 232,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "465:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 235,
+                  "indexed": false,
+                  "name": "patientName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 241,
+                  "src": "500:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 234,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "500:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 237,
+                  "indexed": false,
+                  "name": "billType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 241,
+                  "src": "529:15:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 236,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "529:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 239,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 241,
+                  "src": "555:13:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 238,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "555:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "454:121:2"
+            },
+            "src": "439:137:2"
+          },
+          {
+            "body": {
+              "id": 274,
+              "nodeType": "Block",
+              "src": "760:312:2",
+              "statements": [
+                {
+                  "assignments": [
+                    253
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 253,
+                      "name": "newBill",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 274,
+                      "src": "808:19:2",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Bill_$228_memory_ptr",
+                        "typeString": "struct Medical.Bill"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 252,
+                        "name": "Bill",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 228,
+                        "src": "808:4:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Bill_$228_storage_ptr",
+                          "typeString": "struct Medical.Bill"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 260,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 255,
+                        "name": "_patientId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 243,
+                        "src": "835:10:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 256,
+                        "name": "_patientName",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 245,
+                        "src": "847:12:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 257,
+                        "name": "_billType",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 247,
+                        "src": "861:9:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 258,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 249,
+                        "src": "872:7:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 254,
+                      "name": "Bill",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 228,
+                      "src": "830:4:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Bill_$228_storage_ptr_$",
+                        "typeString": "type(struct Medical.Bill storage pointer)"
+                      }
+                    },
+                    "id": 259,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "830:50:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Bill_$228_memory",
+                      "typeString": "struct Medical.Bill memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "808:72:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 264,
+                        "name": "newBill",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 253,
+                        "src": "946:7:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Bill_$228_memory_ptr",
+                          "typeString": "struct Medical.Bill memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Bill_$228_memory_ptr",
+                          "typeString": "struct Medical.Bill memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 261,
+                        "name": "bills",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 231,
+                        "src": "935:5:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Bill_$228_storage_$dyn_storage",
+                          "typeString": "struct Medical.Bill storage ref[] storage ref"
+                        }
+                      },
+                      "id": 263,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "935:10:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Bill_$228_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct Medical.Bill storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 265,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "935:19:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 266,
+                  "nodeType": "ExpressionStatement",
+                  "src": "935:19:2"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 268,
+                        "name": "_patientId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 243,
+                        "src": "1019:10:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 269,
+                        "name": "_patientName",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 245,
+                        "src": "1031:12:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 270,
+                        "name": "_billType",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 247,
+                        "src": "1045:9:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 271,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 249,
+                        "src": "1056:7:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 267,
+                      "name": "BillAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 241,
+                      "src": "1009:9:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (string memory,string memory,string memory,string memory)"
+                      }
+                    },
+                    "id": 272,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1009:55:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 273,
+                  "nodeType": "EmitStatement",
+                  "src": "1004:60:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 275,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addMedicalBill",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 250,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 243,
+                  "name": "_patientId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "651:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 242,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "651:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 245,
+                  "name": "_patientName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "677:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 244,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "677:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 247,
+                  "name": "_billType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "705:23:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 246,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "705:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 249,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "730:21:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 248,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "730:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "650:102:2"
+            },
+            "returnParameters": {
+              "id": 251,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "760:0:2"
+            },
+            "scope": 276,
+            "src": "627:445:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 277,
+        "src": "93:982:2"
+      }
+    ],
+    "src": "33:1044:2"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/Medical.sol",
+      "exportedSymbols": {
+        "Medical": [
+          276
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 218,
+        "name": "PragmaDirective",
+        "src": "33:23:2"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 219,
+        "name": "PragmaDirective",
+        "src": "58:33:2"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            276
+          ],
+          "name": "Medical",
+          "scope": 277
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "Medical.Bill",
+              "name": "Bill",
+              "scope": 276,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "patientId",
+                  "scope": 228,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 220,
+                    "name": "ElementaryTypeName",
+                    "src": "198:6:2"
+                  }
+                ],
+                "id": 221,
+                "name": "VariableDeclaration",
+                "src": "198:16:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "patientName",
+                  "scope": 228,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 222,
+                    "name": "ElementaryTypeName",
+                    "src": "225:6:2"
+                  }
+                ],
+                "id": 223,
+                "name": "VariableDeclaration",
+                "src": "225:18:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "billType",
+                  "scope": 228,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 224,
+                    "name": "ElementaryTypeName",
+                    "src": "254:6:2"
+                  }
+                ],
+                "id": 225,
+                "name": "VariableDeclaration",
+                "src": "254:15:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "amount",
+                  "scope": 228,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 226,
+                    "name": "ElementaryTypeName",
+                    "src": "280:6:2"
+                  }
+                ],
+                "id": 227,
+                "name": "VariableDeclaration",
+                "src": "280:13:2"
+              }
+            ],
+            "id": 228,
+            "name": "StructDefinition",
+            "src": "175:126:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "bills",
+              "scope": 276,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "struct Medical.Bill[]",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "length": null,
+                  "type": "struct Medical.Bill[]"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "Bill",
+                      "referencedDeclaration": 228,
+                      "type": "struct Medical.Bill"
+                    },
+                    "id": 229,
+                    "name": "UserDefinedTypeName",
+                    "src": "356:4:2"
+                  }
+                ],
+                "id": 230,
+                "name": "ArrayTypeName",
+                "src": "356:6:2"
+              }
+            ],
+            "id": 231,
+            "name": "VariableDeclaration",
+            "src": "356:19:2"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "BillAdded"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "patientId",
+                      "scope": 241,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 232,
+                        "name": "ElementaryTypeName",
+                        "src": "465:6:2"
+                      }
+                    ],
+                    "id": 233,
+                    "name": "VariableDeclaration",
+                    "src": "465:24:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "patientName",
+                      "scope": 241,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 234,
+                        "name": "ElementaryTypeName",
+                        "src": "500:6:2"
+                      }
+                    ],
+                    "id": 235,
+                    "name": "VariableDeclaration",
+                    "src": "500:18:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "billType",
+                      "scope": 241,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 236,
+                        "name": "ElementaryTypeName",
+                        "src": "529:6:2"
+                      }
+                    ],
+                    "id": 237,
+                    "name": "VariableDeclaration",
+                    "src": "529:15:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "amount",
+                      "scope": 241,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 238,
+                        "name": "ElementaryTypeName",
+                        "src": "555:6:2"
+                      }
+                    ],
+                    "id": 239,
+                    "name": "VariableDeclaration",
+                    "src": "555:13:2"
+                  }
+                ],
+                "id": 240,
+                "name": "ParameterList",
+                "src": "454:121:2"
+              }
+            ],
+            "id": 241,
+            "name": "EventDefinition",
+            "src": "439:137:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "addMedicalBill",
+              "scope": 276,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_patientId",
+                      "scope": 275,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 242,
+                        "name": "ElementaryTypeName",
+                        "src": "651:6:2"
+                      }
+                    ],
+                    "id": 243,
+                    "name": "VariableDeclaration",
+                    "src": "651:24:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_patientName",
+                      "scope": 275,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 244,
+                        "name": "ElementaryTypeName",
+                        "src": "677:6:2"
+                      }
+                    ],
+                    "id": 245,
+                    "name": "VariableDeclaration",
+                    "src": "677:26:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_billType",
+                      "scope": 275,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 246,
+                        "name": "ElementaryTypeName",
+                        "src": "705:6:2"
+                      }
+                    ],
+                    "id": 247,
+                    "name": "VariableDeclaration",
+                    "src": "705:23:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_amount",
+                      "scope": 275,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 248,
+                        "name": "ElementaryTypeName",
+                        "src": "730:6:2"
+                      }
+                    ],
+                    "id": 249,
+                    "name": "VariableDeclaration",
+                    "src": "730:21:2"
+                  }
+                ],
+                "id": 250,
+                "name": "ParameterList",
+                "src": "650:102:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 251,
+                "name": "ParameterList",
+                "src": "760:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        253
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "newBill",
+                          "scope": 274,
+                          "stateVariable": false,
+                          "storageLocation": "memory",
+                          "type": "struct Medical.Bill",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "Bill",
+                              "referencedDeclaration": 228,
+                              "type": "struct Medical.Bill"
+                            },
+                            "id": 252,
+                            "name": "UserDefinedTypeName",
+                            "src": "808:4:2"
+                          }
+                        ],
+                        "id": 253,
+                        "name": "VariableDeclaration",
+                        "src": "808:19:2"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": true,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "struct Medical.Bill memory",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                },
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                },
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                },
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 228,
+                              "type": "type(struct Medical.Bill storage pointer)",
+                              "value": "Bill"
+                            },
+                            "id": 254,
+                            "name": "Identifier",
+                            "src": "830:4:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 243,
+                              "type": "string memory",
+                              "value": "_patientId"
+                            },
+                            "id": 255,
+                            "name": "Identifier",
+                            "src": "835:10:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 245,
+                              "type": "string memory",
+                              "value": "_patientName"
+                            },
+                            "id": 256,
+                            "name": "Identifier",
+                            "src": "847:12:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 247,
+                              "type": "string memory",
+                              "value": "_billType"
+                            },
+                            "id": 257,
+                            "name": "Identifier",
+                            "src": "861:9:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 249,
+                              "type": "string memory",
+                              "value": "_amount"
+                            },
+                            "id": 258,
+                            "name": "Identifier",
+                            "src": "872:7:2"
+                          }
+                        ],
+                        "id": 259,
+                        "name": "FunctionCall",
+                        "src": "830:50:2"
+                      }
+                    ],
+                    "id": 260,
+                    "name": "VariableDeclarationStatement",
+                    "src": "808:72:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_struct$_Bill_$228_memory_ptr",
+                                  "typeString": "struct Medical.Bill memory"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "push",
+                              "referencedDeclaration": null,
+                              "type": "function (struct Medical.Bill storage ref) returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 231,
+                                  "type": "struct Medical.Bill storage ref[] storage ref",
+                                  "value": "bills"
+                                },
+                                "id": 261,
+                                "name": "Identifier",
+                                "src": "935:5:2"
+                              }
+                            ],
+                            "id": 263,
+                            "name": "MemberAccess",
+                            "src": "935:10:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 253,
+                              "type": "struct Medical.Bill memory",
+                              "value": "newBill"
+                            },
+                            "id": 264,
+                            "name": "Identifier",
+                            "src": "946:7:2"
+                          }
+                        ],
+                        "id": 265,
+                        "name": "FunctionCall",
+                        "src": "935:19:2"
+                      }
+                    ],
+                    "id": 266,
+                    "name": "ExpressionStatement",
+                    "src": "935:19:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                },
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                },
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                },
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 241,
+                              "type": "function (string memory,string memory,string memory,string memory)",
+                              "value": "BillAdded"
+                            },
+                            "id": 267,
+                            "name": "Identifier",
+                            "src": "1009:9:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 243,
+                              "type": "string memory",
+                              "value": "_patientId"
+                            },
+                            "id": 268,
+                            "name": "Identifier",
+                            "src": "1019:10:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 245,
+                              "type": "string memory",
+                              "value": "_patientName"
+                            },
+                            "id": 269,
+                            "name": "Identifier",
+                            "src": "1031:12:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 247,
+                              "type": "string memory",
+                              "value": "_billType"
+                            },
+                            "id": 270,
+                            "name": "Identifier",
+                            "src": "1045:9:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 249,
+                              "type": "string memory",
+                              "value": "_amount"
+                            },
+                            "id": 271,
+                            "name": "Identifier",
+                            "src": "1056:7:2"
+                          }
+                        ],
+                        "id": 272,
+                        "name": "FunctionCall",
+                        "src": "1009:55:2"
+                      }
+                    ],
+                    "id": 273,
+                    "name": "EmitStatement",
+                    "src": "1004:60:2"
+                  }
+                ],
+                "id": 274,
+                "name": "Block",
+                "src": "760:312:2"
+              }
+            ],
+            "id": 275,
+            "name": "FunctionDefinition",
+            "src": "627:445:2"
+          }
+        ],
+        "id": 276,
+        "name": "ContractDefinition",
+        "src": "93:982:2"
+      }
+    ],
+    "id": 277,
+    "name": "SourceUnit",
+    "src": "33:1044:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xA0780284cbb842Fe3bA8c1C9F5f39e928108D6b5",
+      "transactionHash": "0xf80ee6c5ad0499e31d9281079cfec89a30ea47c81234ecfdca99821670467f64"
+    }
+  },
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-05-06T05:59:02.851Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

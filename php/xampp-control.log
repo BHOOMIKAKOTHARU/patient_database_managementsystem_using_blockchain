@@ -1,0 +1,27 @@
+12:28:28  [main] 	Initializing Control Panel
+12:28:28  [main] 	Windows Version:  Home  64-bit
+12:28:28  [main] 	XAMPP Version: 8.2.12
+12:28:28  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+12:28:28  [main] 	You are not running with administrator rights! This will work for
+12:28:28  [main] 	most application stuff but whenever you do something with services
+12:28:28  [main] 	there will be a security dialogue or things will break! So think 
+12:28:28  [main] 	about running this application with administrator rights!
+12:28:28  [main] 	XAMPP Installation Directory: "c:\users\kotha\desktop\se\php\"
+12:28:28  [main] 	Checking for prerequisites
+12:28:29  [main] 	All prerequisites found
+12:28:29  [main] 	Initializing Modules
+12:28:29  [main] 	Starting Check-Timer
+12:28:29  [main] 	Control Panel Ready
+12:28:30  [Apache] 	Attempting to start Apache app...
+12:28:31  [Apache] 	Status change detected: running
+12:28:31  [Apache] 	Status change detected: stopped
+12:28:31  [Apache] 	Error: Apache shutdown unexpectedly.
+12:28:31  [Apache] 	This may be due to a blocked port, missing dependencies, 
+12:28:31  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+12:28:31  [Apache] 	Press the Logs button to view error logs and check
+12:28:31  [Apache] 	the Windows Event Viewer for more clues
+12:28:31  [Apache] 	If you need more help, copy and post this
+12:28:31  [Apache] 	entire log window on the forums
+12:36:37  [main] 	Deinitializing Modules
+12:36:37  [main] 	Deinitializing Control Panel
+

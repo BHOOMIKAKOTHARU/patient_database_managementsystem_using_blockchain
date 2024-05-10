@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ins_suc.css">
+  <title>Insurance Portal</title>
+</head>
+<body>
+  <header>
+    <h1>Insurance Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="insurance_home.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="xy">
+    <label for="patientId">Patient ID:</label>
+    <input type="text" id="patientId" placeholder="Patient ID">
+  </div>
+  <div class="xy">
+    <label for="patientName">Patient Name:</label>
+    <input type="text" id="patientName" placeholder="Patient Name">
+  </div>
+  <div class="button-container">
+    <button id="checkResultsBtn">Check Insurance Results</button>
+  </div>
+  <div id="result"></div>
+  <footer>
+    <p>&copy; 2024 Insurance Portal</p>
+  </footer>
+
+ <!-- <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.3.6/dist/web3.min.js"></script>-->
+ <script src="https://cdn.jsdelivr.net/npm/web3@1.3.6/dist/web3.min.js"></script>
+  <script>
+    document.getElementById("checkResultsBtn").addEventListener("click", function() {
+      var patientId = document.getElementById("patientId").value;
+      var patientName = document.getElementById("patientName").value;
+     
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "check_results.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          document.getElementById("result").innerHTML = xhr.responseText;
+        }
+      };
+      xhr.send("patientId=" + patientId + "&patientName=" + patientName);
+    });
+  </script>
+
+</body>
+</html>

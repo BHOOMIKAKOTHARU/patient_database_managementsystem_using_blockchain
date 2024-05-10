@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light grey background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+.password-reset-container {
+    background-color: #ffffff; /* White background for the form */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.password-reset-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.password-reset-form input[type="email"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 4px;
+}
+
+.password-reset-form button {
+    padding: 10px;
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.password-reset-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+.background-image {
+    /* Your background image styling */
+background-image: url('patient_image.jpg');
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+}

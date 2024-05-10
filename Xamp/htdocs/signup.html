@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Sign up</title>
+    <link rel="stylesheet" href="si.css">
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="container">
+        <header>
+            <h1>Sign up</h1>
+            <div class="signup-form">
+                <form action="register.php" method="POST">
+                    <input type="text" name="username" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="date" name="dob" placeholder="Date of Birth" required>
+                    <input type="number" name="age" placeholder="Age" required min="0" max="120">
+                    <input type="tel" name="phoneNumber" placeholder="Phone Number" required pattern="[0-9]{10}">
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">sign up</button>
+                </form>
+            </div>
+        </header>
+    </div>
+</body>
+</html>

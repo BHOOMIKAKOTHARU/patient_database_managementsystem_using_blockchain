@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Dashboard</title>
+    <link rel="stylesheet" href="pat_suc.css">
+   <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+
+</head>
+<body
+<div id="bills_data"></div> <script src="script2.js"></script>
+
+    <header>
+        <h1>Medical Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="medical_home.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <button id="addBillsBtn">Add Bills</button>
+        <section id="addBillsSection" style="display: none;">
+            <h2>Add Bills</h2>
+            <form id="addBillsForm" action="m_bills.php" method="POST">
+                <label for="patientId">Patient ID:</label>
+                <input type="text" id="patientId" name="patientId" required><br>
+
+                <label for="username">Patient Name:</label>
+                <input type="text" id="username" name="username" required><br>
+
+                <label for="billType">Bill Type:</label>
+                <select name="billType" id="billType">
+                    <option value="medical">Medical</option>
+                    <option value="pharmacy">Pharmacy</option>
+                    <option value="lab">Lab Tests</option>
+                    <!-- Add more options as needed -->
+                </select><br>
+
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required><br>
+
+                <!-- New input field for uploading image -->
+                <label for="billImage">Upload Image:</label>
+                <input type="file" id="billImage" name="billImage" accept="image/*"><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Medical Portal</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('addBillsBtn').addEventListener('click', function() {
+            document.getElementById('addBillsSection').style.display = 'block';
+            // Scroll to the add bills section
+            document.getElementById('addBillsSection').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="pat_suc.css">
+</head>
+<body>
+    <header>
+        <h1>Patient Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="patient_home.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <button id="addBillsBtn">Add Bills</button>
+        <button id="checkResultsBtn">Check Insurance Results</button>
+
+        <section id="addBillsSection" style="display: none;">
+            <h2>Add Bills</h2>
+            <form id="addBillsForm" action="#" method="POST">
+                <label for="billType">Bill Type:</label>
+                <select name="billType" id="billType">
+                    <option value="medical">Medical</option>
+                    <option value="pharmacy">Pharmacy</option>
+                    <option value="lab">Lab Tests</option>
+                    <!-- Add more options as needed -->
+                </select><br>
+
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required><br>
+
+                <!-- New input field for uploading image -->
+                <label for="billImage">Upload Image:</label>
+                <input type="file" id="billImage" name="billImage" accept="image/*"><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section id="checkResultsSection" style="display: none;">
+            <h2>Insurance Results</h2>
+            <div id="insuranceResults">
+                <!-- Results will be displayed here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Patient Portal</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('addBillsBtn').addEventListener('click', function() {
+            document.getElementById('addBillsSection').style.display = 'block';
+            document.getElementById('checkResultsSection').style.display = 'none';
+            // Scroll to the add bills section
+            document.getElementById('addBillsSection').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('checkResultsBtn').addEventListener('click', function() {
+            document.getElementById('addBillsSection').style.display = 'none';
+            document.getElementById('checkResultsSection').style.display = 'block';
+            // Implement logic to check insurance results and display them in #insuranceResults div
+            document.getElementById('insuranceResults').innerHTML = 'Checking insurance results...'; // Example message
+        });
+    </script>
+</body>
+</html>

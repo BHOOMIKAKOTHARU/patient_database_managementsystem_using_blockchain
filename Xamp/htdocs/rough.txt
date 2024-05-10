@@ -1,0 +1,354 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.5.0;
+pragma experimental ABIEncoderV2;
+
+contract Patient {
+    // Struct to represent medical bills
+    struct MedicalBill {
+        uint256 billId;
+        string patientId;
+        string username;
+        string billType;
+        uint256 amount;
+        // Add more fields as needed
+    }
+
+    // Array to store medical bills
+    MedicalBill[] public medicalBills;
+
+    // Event to emit when a new bill is added
+    event BillAdded(uint256 indexed billId, string patientId, string username, string billType, uint256 amount);
+
+    // Function to add a new medical bill to the blockchain
+    function addMedicalBill(uint256 _billId, string memory _patientId, string memory _username, string memory _billType, uint256 _amount) public {
+        // Create a new MedicalBill object
+        MedicalBill memory newBill = MedicalBill(_billId, _patientId, _username, _billType, _amount);
+        
+        // Add the new bill to the array
+        medicalBills.push(newBill);
+        
+        // Emit an event for the new bill
+        emit BillAdded(_billId, _patientId, _username, _billType, _amount);
+    }
+
+    // Function to retrieve all medical bills stored in the blockchain
+    function getAllMedicalBills() public view returns (MedicalBill[] memory) {
+        return medicalBills;
+    }
+}
+
+
+
+
+
+
+<?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Establish connection to MySQL database
+    $servername = "localhost"; // Change this if your MySQL server is running on a different host
+    $username = "root"; // Your MySQL username
+    $password = "Padmaja@205"; // Your MySQL password
+    $dbname = "patient"; // Your database name
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Retrieve form data
+    $username = $_POST['username']; // Add this line to retrieve username
+    $patientId = $_POST['patientId'];
+    $billType = $_POST['billType'];
+    $amount = $_POST['amount'];
+
+    // Handle file upload and convert file to binary
+    $billImage = addslashes(file_get_contents($_FILES["billImage"]["tmp_name"]));
+
+    // Prepare and bind SQL statement
+     $stmt = $conn->prepare("INSERT INTO bills (patientId, username, billType, amount, billImage) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $patientId, $username, $billType, $amount, $billImage);
+    // Execute the prepared statement
+    if ($stmt->execute()) {
+        echo "Data inserted successfully.";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+   function storePatientDataToContract($username, $patientId, $billType, $amount, $billImage) {
+    $contractAddress = "0x123..."; // Address of your deployed Patient.sol contract
+    $web3 = new Web3('http://localhost:7545'); // Assuming you have a local Ethereum node running
+    $contract = new Contract($web3->provider, $abi); // Replace $abi with your contract ABI
+    $contract->at($contractAddress)->send('storePatientData', $username, $patientId, $billType, $amount, $billImage);
+}
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Your database connection and data retrieval code here...
+
+    // Call the function to store patient data to the smart contract
+    storePatientDataToContract($username, $patientId, $billType, $amount, $billImage);
+
+    // Rest of your PHP code...
+}
+    // Close statement and connection
+    $stmt->close();
+    $conn->close();
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Connect to Ganache
+async function connectToBlockchain() {
+    try {
+        var web3;
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // Set up Ganache provider
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+        }
+
+        // Check connection
+        var isListening = await web3.eth.net.isListening();
+        console.log('Connected to Ganache:', isListening);
+        
+        return web3; // Return the web3 instance for further use
+    } catch (error) {
+        console.error('Error connecting to Ganache:', error);
+        throw error; // Rethrow the error for handling in the caller
+    }
+}
+
+// Load smart contract
+async function loadContract(web3) {
+    try {
+        var contractAbi = [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "billId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "patientId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "username",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "billType",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "BillAdded",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "medicalBills",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "billId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "patientId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "username",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "billType",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_billId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_patientId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_username",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_billType",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "addMedicalBill",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getAllMedicalBills",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "billId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "patientId",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "username",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "billType",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct Patient.MedicalBill[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ];
+
+        var contractAddress = '0x92Efbc387d5c51E8f8f8dbff849e051Ac7D1EFAd'; // Replace with your contract address
+        var contract = new web3.eth.Contract(contractAbi, contractAddress);
+        
+        return contract; // Return the contract instance for further use
+    } catch (error) {
+        console.error('Error loading contract:', error);
+        throw error; // Rethrow the error for handling in the caller
+    }
+}
+
+// Example usage
+// Example usage
+async function main() {
+    try {
+        var web3 = await connectToBlockchain();
+        if (!web3) {
+            throw new Error('Web3 object is undefined');
+        }
+        var contract = await loadContract(web3); // Pass web3 object to loadContract()
+
+        // Call a function on the smart contract
+       await contract.methods.addMedicalBill(1, "patient123", "user123", "type1", 100).send({ from: "0xe2e9dA0D095D508B5a55bb5c6b9d8F5953489E1f",gas: 5000000 });
+        console.log('Medical bill added successfully');
+
+        // Call the getAllMedicalBills() function on the smart contract
+        var allMedicalBills = await contract.methods.getAllMedicalBills().call();
+        console.log('All medical bills:', allMedicalBills);
+         console.log('-----------------------------');
+        console.log('Retrieved Medical Bills:');
+        console.log('-----------------------------');
+        allMedicalBills.forEach(function(bill) {
+            console.log('Bill ID:', bill.billId);
+            console.log('Patient ID:', bill.patientId);
+            console.log('Username:', bill.username);
+            console.log('Bill Type:', bill.billType);
+            console.log('Amount:', bill.amount);
+            console.log('-----------------------------');
+        });
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+}
+main(); // Execute the main function
+
+
